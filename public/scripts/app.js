@@ -12,6 +12,9 @@
     $scope.data;
     $scope.countDown;
     $scope.intervalTime = 120000;
+    $scope.audio = new Audio('http://soundbible.com/mp3/sms-alert-3-daniel_simon.mp3');
+
+    $scope.audio.volume = .5;
 
     $scope.states = ['NSW','TAS', 'SA', 'WA', 'QLD', 'VIC', 'NT'];
     $scope.phones = [
@@ -90,6 +93,18 @@
         var d = new Date();
         var dateString = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
         $scope.status = "Last fetched at " + dateString;
+      });
+    }
+
+    $scope.notify = function(phone){
+      $scope.audio.play();
+      Push.create("Found iphone", {
+          body: phone,
+          timeout: 4000,
+          onClick: function () {
+              window.focus();
+              this.close();
+          }
       });
     }
 
