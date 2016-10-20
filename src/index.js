@@ -5,6 +5,7 @@ import Config from './config';
 
 var app = express();
 var appleFetcher = new AppleFetcher();
+var port = process.env.PORT || 5000;
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname+'/public/index.html');
@@ -17,8 +18,8 @@ app.get('/fetch', function(req, res, next) {
   res.json(appleFetcher.getStores(req.query.token));
 });
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port);
 });
 
 appleFetcher.fetchAllStores();
