@@ -14,28 +14,43 @@
     $scope.intervalTime = 120000;
 
     $scope.states = ['NSW','TAS', 'SA', 'WA', 'QLD', 'VIC', 'NT'];
-    $scope.phones = [ { "partNumber": "MN922X/A", "storePickupProductTitle": "Black 128GB" },
-    { "partNumber": "MN972X/A", "storePickupProductTitle": "Black 256GB" },
+    $scope.phones = [
     { "partNumber": "MN8X2X/A", "storePickupProductTitle": "Black 32GB" },
+    { "partNumber": "MN922X/A", "storePickupProductTitle": "Black 128GB" },
+    { "partNumber": "MN972X/A", "storePickupProductTitle": "Black 256GB" },
+
+    { "partNumber": "MNQM2X/A", "storePickupProductTitle": "Black Plus 32GB" },
     { "partNumber": "MN4M2X/A", "storePickupProductTitle": "Black Plus 128GB" },
-    { "partNumber": "MN4V2X/A", "storePickupProductTitle": "Black Plus 128GB" },
     { "partNumber": "MN4W2X/A", "storePickupProductTitle": "Black Plus 256GB" },
+
+    { "partNumber": "MN902X/A", "storePickupProductTitle": "Gold 32GB" },
     { "partNumber": "MN942X/A", "storePickupProductTitle": "Gold 128GB" },
     { "partNumber": "MN992X/A", "storePickupProductTitle": "Gold 256GB" },
-    { "partNumber": "MN902X/A", "storePickupProductTitle": "Gold 32GB" },
-    { "partNumber": "MN912X/A", "storePickupProductTitle": "Gold 32GB Rose" },
+
+    { "partNumber": "MNQP2X/A", "storePickupProductTitle": "Gold Plus 32GB" },
     { "partNumber": "MN4Q2X/A", "storePickupProductTitle": "Gold Plus 128GB" },
     { "partNumber": "MN4Y2X/A", "storePickupProductTitle": "Gold Plus 256GB" },
-    { "partNumber": "MNQP2X/A", "storePickupProductTitle": "Gold Plus 32GB" },
-    { "partNumber": "MNQQ2X/A", "storePickupProductTitle": "Gold Plus 32GB Rose" },
+
+    { "partNumber": "MN912X/A", "storePickupProductTitle": "Rose Gold 32GB" },
+
+    { "partNumber": "MNQQ2X/A", "storePickupProductTitle": "Rose Gold Plus 32GB" },
+    { "partNumber": "MN4U2X/A", "storePickupProductTitle": "Rose Gold Plus 128GB" },
+    { "partNumber": "MN502X/A", "storePickupProductTitle": "Rose Gold Plus 256GB" },
+
     { "partNumber": "MN962X/A", "storePickupProductTitle": "Jet Black 128GB" },
     { "partNumber": "MN9C2X/A", "storePickupProductTitle": "Jet Black 256GB" },
+
+    { "partNumber": "MN4V2X/A", "storePickupProductTitle": "Jet Black Plus 128GB" },
     { "partNumber": "MN512X/A", "storePickupProductTitle": "Jet Black Plus 256GB" },
-    { "partNumber": "MN932X/A", "storePickupProductTitle": "Silver 128GB" },
+
     { "partNumber": "MN8Y2X/A", "storePickupProductTitle": "Silver 32GB" },
+    { "partNumber": "MN932X/A", "storePickupProductTitle": "Silver 128GB" },
+    { "partNumber": "MN982X/A", "storePickupProductTitle": "Silver 256GB" },
+
+    { "partNumber": "MNQN2X/A", "storePickupProductTitle": "Silver Plus 32GB" },
     { "partNumber": "MN4P2X/A", "storePickupProductTitle": "Silver Plus 128GB" },
-    { "partNumber": "MN4X2X/A", "storePickupProductTitle": "Silver Plus 256GB" },
-    { "partNumber": "MNQN2X/A", "storePickupProductTitle": "Silver Plus 32GB" } ];
+    { "partNumber": "MN4X2X/A", "storePickupProductTitle": "Silver Plus 256GB" }
+   ];
 
     $scope.sorted = function(){
       return _.sortBy($scope.phones, 'storePickupProductTitle');
