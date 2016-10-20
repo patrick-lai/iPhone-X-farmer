@@ -108,7 +108,7 @@
 
     $scope.notify = function(phone){
 
-      if(!$scope.notifications || !$scope.checkedPhones[phone.partNumber]) return;
+      if(!$scope.notifications || !$scope.checkedPhones[phone.partNumber] || !phone.storeSelectionEnabled) return;
 
       $scope.audio.play();
       Push.create(phone.storePickupProductTitle+" found!", {
