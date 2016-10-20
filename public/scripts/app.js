@@ -45,7 +45,6 @@
 
     { "partNumber": "MN8Y2X/A", "storePickupProductTitle": "Silver 32GB" },
     { "partNumber": "MN932X/A", "storePickupProductTitle": "Silver 128GB" },
-    { "partNumber": "MN982X/A", "storePickupProductTitle": "Silver 256GB" },
 
     { "partNumber": "MNQN2X/A", "storePickupProductTitle": "Silver Plus 32GB" },
     { "partNumber": "MN4P2X/A", "storePickupProductTitle": "Silver Plus 128GB" },
