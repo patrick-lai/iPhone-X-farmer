@@ -25,4 +25,4 @@ app.listen(port, function () {
 appleFetcher.fetchAllStores();
 appleFetcher.fetchTokens(Config.googleSheetKey);
 
-// appleFetcher.watchAppleStores();
+appleFetcher.watchAppleStores();

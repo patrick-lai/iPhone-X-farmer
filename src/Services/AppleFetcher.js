@@ -118,6 +118,7 @@ class AppleFetcher {
     // Loop fetch
     if(this.interval == null){
       this.interval = setInterval(function() {
+        console.log("fetching all stores");
         fetchAllStores();
         fetchTokens(Config.googleSheetKey);
       }, Config.fetchInterval);
