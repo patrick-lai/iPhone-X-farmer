@@ -126,6 +126,9 @@
       $scope.countDown = $scope.intervalTime/1000;
     }
 
+    // Initial fetch
+    if($scope.token) $scope.saveTokenAndFetch();
+
     // Interval
     $interval(function(){
       $scope.fetchData();
