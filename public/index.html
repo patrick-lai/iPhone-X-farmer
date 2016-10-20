@@ -12,9 +12,14 @@
           <label class="mdl-textfield__label" for="token">Token</label>
         </div>
         <!-- Raised button with ripple -->
-        <button ng-click="saveTokenAndFetch()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+        <button ng-click="saveTokenAndFetch()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="margin: 0 1em;">
           Save Token
         </button>
+
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+          <input type="checkbox" class="mdl-switch__input" ng-model="notifications">
+          <span class="mdl-switch__label">Notifications</span>
+        </label>
       </form>
 
       <div ng-show="countDown"> {{status}}  | Next Refresh : {{countDown}} seconds</div>

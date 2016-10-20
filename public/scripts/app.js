@@ -13,8 +13,8 @@
     $scope.countDown;
     $scope.intervalTime = 120000;
     $scope.audio = new Audio('http://soundbible.com/mp3/sms-alert-3-daniel_simon.mp3');
-
     $scope.audio.volume = .5;
+    $scope.notifications = true;
 
     $scope.states = ['NSW','TAS', 'SA', 'WA', 'QLD', 'VIC', 'NT'];
     $scope.phones = [
@@ -58,8 +58,18 @@
       return _.sortBy($scope.phones, 'storePickupProductTitle');
     }
 
-    $scope.checkedStates = {};
-    $scope.checkedPhones= {};
+    $scope.checkedStates = {
+      'NSW' : true,
+      'VIC' : true,
+      'QLD' : true
+    };
+
+    $scope.checkedPhones= {
+      'MN4V2X/A': true,
+      'MN512X/A': true,
+      'MN4M2X/A': true,
+      'MN4W2X/A': true
+    };
 
     $scope.isStateChecked = function(state){
       return $scope.checkedStates[state] ? true : false;
@@ -97,6 +107,8 @@
     }
 
     $scope.notify = function(phone){
+      if(!$scope.notifications) return;
+
       $scope.audio.play();
       Push.create("Found iphone", {
           body: phone,
