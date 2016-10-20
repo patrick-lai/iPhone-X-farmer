@@ -107,11 +107,11 @@
     }
 
     $scope.notify = function(phone){
-      if(!$scope.notifications) return;
+
+      if(!$scope.notifications || !$scope.checkedPhones[phone.partNumber]) return!
 
       $scope.audio.play();
-      Push.create("Found iphone", {
-          body: phone,
+      Push.create(phone.storePickupProductTitle+" found!", {
           timeout: 4000,
           onClick: function () {
               window.focus();

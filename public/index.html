@@ -47,7 +47,7 @@
             <h2 class="mdl-card__title-text" style="color: white;">{{store.storeName}}</h2>
           </div>
           <div class="mdl-card__supporting-text">
-            <p ng-repeat="phone in store.partsAvailability" ng-if="isPhoneChecked(phone.partNumber)" ng-init="notify(phone.storePickupProductTitle)">
+            <p ng-repeat="phone in store.partsAvailability" ng-if="isPhoneChecked(phone.partNumber)" ng-init="notify(phone)">
               {{phone.storePickupProductTitle}} : <span ng-class="{'green' : phone.storeSelectionEnabled, 'grey' : !phone.storeSelectionEnabled}">{{phone.pickupDisplay}}</span>
             </p>
           </div>
