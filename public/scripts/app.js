@@ -11,7 +11,7 @@
     $scope.status;
     $scope.data;
     $scope.countDown;
-    $scope.intervalTime = 120000;
+    $scope.intervalTime = 240000;
     $scope.audio = new Audio('http://soundbible.com/mp3/sms-alert-3-daniel_simon.mp3');
     $scope.audio.volume = .5;
     $scope.notifications = true;
