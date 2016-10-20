@@ -24,3 +24,7 @@ label.mdl-switch {
     display: inline-block;
     max-width: 200px;
 }
+
+.clear{
+  clear: both;
+}

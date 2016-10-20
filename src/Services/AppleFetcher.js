@@ -29,7 +29,8 @@ class AppleFetcher {
       'parts.17' : 'MN512X/A', //Apple iPhone 7 Plus 256GB - Jet Black $1,569.00
       'parts.18' : 'MNQP2X/A', //Apple iPhone 7 Plus 32GB - Gold $1,269.50
       'parts.19' : 'MNQN2X/A', //Apple iPhone 7 Plus 32GB - Silver $1,269.50
-      'parts.20' : 'MNQQ2X/A' //Apple iPhone 7 Plus 32GB- Rose Gold $1,269.50
+      'parts.20' : 'MNQQ2X/A', //Apple iPhone 7 Plus 32GB- Rose Gold $1,269.50,
+      'parts.21' : 'MN4V2X/A' //Apple iPhone 7 Plus 128GB- Jet Black $1,419.00,
     }
 
     this.locations = {
