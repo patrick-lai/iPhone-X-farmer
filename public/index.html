@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.2.1/material.min.css" />
     </head>
     <body ng-controller="MainCtrl" ng-cloak>
-      
+
       <form action="#">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <input class="mdl-textfield__input" type="text" id="token" ng-model="token">
@@ -27,7 +27,7 @@
 
       <div>
         <h5>States</h5>
-        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" ng-repeat="state in states" >
+        <label ng-click="updateStorage()" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" ng-repeat="state in states" >
           <input type="checkbox" class="mdl-switch__input" ng-model="checkedStates[state]">
           <span class="mdl-switch__label">{{state}}</span>
         </label>
@@ -35,8 +35,8 @@
 
       <div>
         <h5>Models</h5>
-        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" ng-repeat="phone in phones" style="min-width: 300px;">
-          <input type="checkbox" class="mdl-switch__input" ng-model="checkedPhones[phone.partNumber]">
+        <label ng-click="updateStorage()" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" ng-repeat="phone in phones" style="min-width: 300px;">
+          <input type="checkbox" class="mdl-switch__input" ng-click="updateStorage()" ng-model="checkedPhones[phone.partNumber]">
           <span class="mdl-switch__label">{{phone.storePickupProductTitle}}</span>
         </label>
       </div>
@@ -44,7 +44,7 @@
       <!-- Cards -->
       <div style="width: 100%;">
         <div ng-repeat="store in data" class="demo-card-wide mdl-card mdl-shadow--2dp" ng-show="isStateChecked(store.state)">
-          <div class="mdl-card__title" style="background: url('{{store.storeImageUrl}}') center / cover; height: 200px;">
+          <div class="mdl-card__title" style="background-color: #aaa; height: 100px;">
             <h2 class="mdl-card__title-text" style="color: white;">{{store.storeName}}</h2>
           </div>
           <div class="mdl-card__supporting-text">

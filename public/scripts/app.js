@@ -58,18 +58,44 @@
       return _.sortBy($scope.phones, 'storePickupProductTitle');
     }
 
-    $scope.checkedStates = {
+    var memoryCheckedStates = {
       'NSW' : true,
       'VIC' : true,
       'QLD' : true
     };
 
-    $scope.checkedPhones= {
+    try{
+      console.log(localStorage.getItem('checkedStates'));
+      var storage = localStorage.getItem('checkedStates');
+      if(storage) memoryCheckedPhones = JSON.parse(storage);
+    }catch(e){
+      console.error(e);
+    }
+
+    $scope.checkedStates = memoryCheckedStates;
+
+    var memoryCheckedPhones = {
       'MN4V2X/A': true,
       'MN512X/A': true,
       'MN4M2X/A': true,
       'MN4W2X/A': true
     };
+
+    try{
+      console.log(localStorage.getItem('checkedPhones'));
+      var storage = localStorage.getItem('checkedPhones');
+      if(storage) memoryCheckedPhones = JSON.parse(storage);
+    }catch(e){
+      console.error(e);
+    }
+
+    $scope.checkedPhones = memoryCheckedPhones;
+
+    // Save changes to memopry
+    $scope.updateStorage = function(){
+      localStorage.setItem('checkedStates', JSON.stringify($scope.checkedStates));
+      localStorage.setItem('checkedPhones', JSON.stringify($scope.checkedPhones));
+    }
 
     $scope.isStateChecked = function(state){
       return $scope.checkedStates[state] ? true : false;

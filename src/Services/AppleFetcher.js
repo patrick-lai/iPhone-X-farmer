@@ -37,12 +37,12 @@ class AppleFetcher {
     }
 
     this.locations = {
-      perth : 6000,
-      sydney : 2000,
-      melbourne: 3000,
-      brisbane: 4000,
-      adelaide: 5000,
-      tasmania: 7000,
+      perth : '6000',
+      sydney : '2000',
+      melbourne: '3000',
+      brisbane: '4000',
+      adelaide: '5000',
+      tasmania: '7000',
       darwin : '0800'
     }
 
@@ -59,7 +59,7 @@ class AppleFetcher {
 
   fetchAllStores(){
     for ( var location in this.locations){
-      this.singleFetch(location);
+      this.singleFetch(this.locations[location]);
     }
   }
 
