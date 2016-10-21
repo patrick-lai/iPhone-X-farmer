@@ -36,7 +36,7 @@
       <div>
         <h5>Models</h5>
         <label ng-click="updateStorage()" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" ng-repeat="phone in phones" style="min-width: 300px;">
-          <input type="checkbox" class="mdl-switch__input" ng-click="updateStorage()" ng-model="checkedPhones[phone.partNumber]">
+          <input type="checkbox" class="mdl-switch__input" ng-model="checkedPhones[phone.partNumber]">
           <span class="mdl-switch__label">{{phone.storePickupProductTitle}}</span>
         </label>
       </div>

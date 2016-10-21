@@ -65,9 +65,8 @@
     };
 
     try{
-      console.log(localStorage.getItem('checkedStates'));
       var storage = localStorage.getItem('checkedStates');
-      if(storage) memoryCheckedPhones = JSON.parse(storage);
+      if(storage) memoryCheckedStates = JSON.parse(storage);
     }catch(e){
       console.error(e);
     }
@@ -82,7 +81,6 @@
     };
 
     try{
-      console.log(localStorage.getItem('checkedPhones'));
       var storage = localStorage.getItem('checkedPhones');
       if(storage) memoryCheckedPhones = JSON.parse(storage);
     }catch(e){
