@@ -128,7 +128,9 @@ class AppleFetcher {
 
   getStores(token){
     // Check token
-    if(this.tokens.indexOf(token) < 0) return {};
+    if(this.tokens.indexOf(token) < 0) return {
+      message: "Token has Expired"
+    };
     // Else return
     return this.stores;
   }

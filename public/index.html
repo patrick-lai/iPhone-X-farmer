@@ -22,7 +22,8 @@
           <span class="mdl-switch__label">Notifications</span>
         </label>
       </form>
-
+      
+      <h3 ng-show="message" style="color: red;"> {{message}}</h3>
       <div ng-show="countDown"> {{status}}  | Next Refresh : {{countDown}} seconds</div>
 
       <div>

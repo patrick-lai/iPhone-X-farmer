@@ -124,6 +124,8 @@
         url: "/fetch?token="+$scope.token
       }).then(function(data){
         $scope.data = data.data;
+        $scope.message = data.data.message;
+
         var d = new Date();
         var dateString = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
         $scope.status = "Last fetched at " + dateString;
