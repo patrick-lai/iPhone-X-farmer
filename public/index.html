@@ -22,7 +22,7 @@
           <span class="mdl-switch__label">Notifications</span>
         </label>
       </form>
-      
+
       <h3 ng-show="message" style="color: red;"> {{message}}</h3>
       <div ng-show="countDown"> {{status}}  | Next Refresh : {{countDown}} seconds</div>
 
@@ -50,7 +50,10 @@
           </div>
           <div class="mdl-card__supporting-text">
             <p ng-repeat="phone in store.partsAvailability" ng-if="isPhoneChecked(phone.partNumber)" ng-init="notify(phone)">
-              {{phone.storePickupProductTitle}} : <span ng-class="{'green' : phone.storeSelectionEnabled, 'grey' : !phone.storeSelectionEnabled}">{{phone.pickupDisplay}}</span>
+              {{phone.storePickupProductTitle}} :
+              <span ng-class="{'green' : phone.pickupDisplay == 'available', 'grey' : phone.pickupDisplay != 'available'}">
+                {{phone.pickupDisplay}}
+              </span>
             </p>
           </div>
           <div class="mdl-card__actions mdl-card--border">
