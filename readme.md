@@ -1,13 +1,14 @@
 Watches Australian Stores for iPhone X. Will give you a notification at OS level.
 
-# Usage
+## Usage
 
 Just download the latest release and operating the binary for your operating system.
 
-# TODO
+## TODO
 
-Potentially extend this to SMS and Email support.
+- Allow adjusting interval.
+- Extend this to SMS and Email support.
 
-# Notes
+## Notes
 
 Only tested on OSX.
