@@ -1,28 +1,47 @@
+require('./printTitle');
+const _ = require('lodash');
+const inquirer = require('inquirer');
+const IPhoneFarmer = require('./IPhoneFarmer');
+const postcodes = require('./postcodes.json');
+const notifyOS = require('./notifyOS');
 
-import express from 'express';
-import AppleFetcher from './Services/AppleFetcher'
-import Config from './config';
+const askForProduct = async () => {
+  const { parts } = IPhoneFarmer;
+  const keyMap = _.invert(parts);
+  const { products } = await inquirer.prompt({
+    type: 'checkbox',
+    message: 'Which models would you like?',
+    name: 'products',
+    choices: Object.values(parts)
+  });
 
-var app = express();
-var appleFetcher = new AppleFetcher();
-var port = process.env.PORT || 5000;
+  if (!products.length) {
+    console.error('You must select at least one product!');
+    process.exit();
+  }
+  return products.map(name => keyMap[name]);
+};
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname+'/public/index.html');
-});
+const askForPostcode = async () => {
+  const { parts } = IPhoneFarmer;
+  const { city } = await inquirer.prompt({
+    type: 'list',
+    message: 'Which city are you in?',
+    name: 'city',
+    choices: Object.keys(postcodes)
+  });
+  return postcodes[city];
+};
 
-app.use(express.static('dist/public'));
+// Ask which iPhone
 
-app.get('/fetch', function(req, res, next) {
-  if(!req.query.token) return;
-  res.json(appleFetcher.getStores(req.query.token));
-});
-
-app.listen(port, function () {
-  console.log('Example app listening on port ' + port);
-});
-
-appleFetcher.fetchAllStores();
-appleFetcher.fetchTokens(Config.googleSheetKey);
-
-appleFetcher.watchAppleStores();
+(async function() {
+  const products = await askForProduct();
+  const postcode = await askForPostcode();
+  const farmer = new IPhoneFarmer({
+    products,
+    interval: process.env.INTERVAL || 5, // 5 minutes
+    location: postcode,
+    onResult: notifyOS.notify
+  });
+})();
