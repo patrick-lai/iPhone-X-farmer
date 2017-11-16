@@ -5,6 +5,8 @@ const LocalStorage = require('node-localstorage').LocalStorage;
 
 const localstorage = new LocalStorage('./savedata');
 
+const isAvailable = availability => availability.pickupDisplay === 'available';
+
 const askForMobile = async () => {
   const { parts } = IPhoneFarmer;
   const { mobile } = await inquirer.prompt({
@@ -31,7 +33,7 @@ module.exports = {
       });
     });
 
-    text.send(localstorage.getItem('mobile'), message, undefined, err => {
+    text.sendText(localstorage.getItem('mobile'), message, 'intl', err => {
       if (err) console.log(err);
     });
   },
