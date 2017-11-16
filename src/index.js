@@ -49,6 +49,8 @@ const askUseSave = async (products, postcode) => {
   if (!useSave) {
     localstorage.removeItem('products');
     localstorage.removeItem('postcode');
+    products = undefined;
+    postcode = undefined;
   }
 };
 // Starts the app
