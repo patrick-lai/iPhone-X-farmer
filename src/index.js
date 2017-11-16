@@ -47,12 +47,7 @@ const askUseSave = async (products, postcode) => {
     choices: Object.keys(postcodes)
   });
 
-  if (!useSave) {
-    localstorage.removeItem('products');
-    localstorage.removeItem('postcode');
-    products = undefined;
-    postcode = undefined;
-  }
+  return useSave;
 };
 // Starts the app
 
@@ -60,7 +55,15 @@ const askUseSave = async (products, postcode) => {
   let products = localstorage.getItem('products');
   let postcode = localstorage.getItem('postcode');
 
-  if (products && postcode) await askUseSave(products, postcode);
+  if (products && postcode) {
+    const useSave = await askUseSave(products, postcode);
+    if (!useSave) {
+      localstorage.removeItem('products');
+      localstorage.removeItem('postcode');
+      products = undefined;
+      postcode = undefined;
+    }
+  }
 
   if (!products) {
     products = await askForProduct();
