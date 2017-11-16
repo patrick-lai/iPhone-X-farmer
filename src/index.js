@@ -36,10 +36,29 @@ const askForPostcode = async () => {
   return postcodes[city];
 };
 
+const askUseSave = async (products, postcode) => {
+  const productNames = products.split(',').map(key => IPhoneFarmer.parts[key]);
+
+  const { useSave } = await inquirer.prompt({
+    type: 'confirm',
+    message: `Would you like to use old save?\n Phones: ${productNames}\n Postcode: ${postcode}\n`,
+    name: 'useSave',
+    choices: Object.keys(postcodes)
+  });
+
+  if (!useSave) {
+    localstorage.removeItem('products');
+    localstorage.removeItem('postcode');
+  }
+};
 // Starts the app
 
 (async function() {
   let products = localstorage.getItem('products');
+  let postcode = localstorage.getItem('postcode');
+
+  if (products && postcode) await askUseSave(products, postcode);
+
   if (!products) {
     products = await askForProduct();
     localstorage.setItem('products', products);
@@ -47,7 +66,6 @@ const askForPostcode = async () => {
     products = products.split(',');
   }
 
-  let postcode = localstorage.getItem('postcode');
   if (!postcode) {
     postcode = await askForPostcode();
     localstorage.setItem('postcode', postcode);
