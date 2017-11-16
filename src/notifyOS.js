@@ -23,6 +23,8 @@ module.exports = {
       return;
     }
 
+    console.log(message);
+
     notifier.notify({
       message,
       wait: true,

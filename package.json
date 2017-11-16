@@ -13,7 +13,6 @@
   "dependencies": {
     "axios": "~0.17.1",
     "inquirer": "~4.0.0",
-    "node-countdown": "~0.1.0",
     "node-notifier": "~5.1.2"
   },
   "engines": {
