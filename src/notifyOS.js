@@ -4,7 +4,8 @@ const IPhoneFarmer = require('./IPhoneFarmer');
 const isAvailable = availability => availability.pickupDisplay === 'available';
 
 module.exports = {
-  notify: stores => {
+  notify: (isFound, stores) => {
+    if (!isFound) return;
     let message = '';
 
     stores.forEach(store => {

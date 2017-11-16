@@ -4,6 +4,7 @@ const inquirer = require('inquirer');
 const IPhoneFarmer = require('./IPhoneFarmer');
 const postcodes = require('./postcodes.json');
 const notifyOS = require('./notifyOS');
+const goToApplePage = require('./goToApplePage');
 const LocalStorage = require('node-localstorage').LocalStorage;
 
 const askForProduct = async () => {
@@ -77,6 +78,9 @@ const askUseSave = async (products, postcode) => {
     products,
     interval: process.env.INTERVAL || 5, // 5 minutes
     location: postcode,
-    onResult: notifyOS.notify
+    onResult: (...args) => {
+      notifyOS.notify(...args);
+      goToApplePage.notify(...args);
+    }
   });
 })();
