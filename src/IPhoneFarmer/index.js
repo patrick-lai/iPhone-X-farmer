@@ -1,6 +1,5 @@
 const { fetch } = require('./api');
 const parts = require('./parts.json');
-const countdown = require('node-countdown');
 
 class IPhoneFarmer {
   constructor({ interval, location, products, onResult }) {

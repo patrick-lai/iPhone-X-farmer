@@ -4,6 +4,7 @@ const inquirer = require('inquirer');
 const IPhoneFarmer = require('./IPhoneFarmer');
 const postcodes = require('./postcodes.json');
 const notifyOS = require('./notifyOS');
+const LocalStorage = require('node-localstorage').LocalStorage;
 
 const askForProduct = async () => {
   const { parts } = IPhoneFarmer;
@@ -22,6 +23,8 @@ const askForProduct = async () => {
   return products.map(name => keyMap[name]);
 };
 
+const localstorage = new LocalStorage('./savedata');
+
 const askForPostcode = async () => {
   const { parts } = IPhoneFarmer;
   const { city } = await inquirer.prompt({
@@ -33,11 +36,23 @@ const askForPostcode = async () => {
   return postcodes[city];
 };
 
-// Ask which iPhone
+// Starts the app
 
 (async function() {
-  const products = await askForProduct();
-  const postcode = await askForPostcode();
+  let products = localstorage.getItem('products');
+  if (!products) {
+    products = await askForProduct();
+    localstorage.setItem('products', products);
+  } else {
+    products = products.split(',');
+  }
+
+  let postcode = localstorage.getItem('postcode');
+  if (!postcode) {
+    postcode = await askForPostcode();
+    localstorage.setItem('postcode', postcode);
+  }
+
   const farmer = new IPhoneFarmer({
     products,
     interval: process.env.INTERVAL || 5, // 5 minutes
