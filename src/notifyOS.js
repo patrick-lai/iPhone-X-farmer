@@ -5,7 +5,11 @@ const isAvailable = availability => availability.pickupDisplay === 'available';
 
 module.exports = {
   notify: (isFound, stores) => {
-    if (!isFound) return;
+    if (!isFound) {
+      console.log('Nothing found');
+      return;
+    }
+
     let message = '';
 
     stores.forEach(store => {
