@@ -19,11 +19,6 @@ module.exports = {
       });
     });
 
-    if (message === '') {
-      console.log('Nothing found');
-      return;
-    }
-
     console.log(message);
 
     notifier.notify({

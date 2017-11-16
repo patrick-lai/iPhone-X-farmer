@@ -1,5 +1,6 @@
 require('./printTitle');
 const _ = require('lodash');
+const sendSMS = require('./sendSMS');
 const inquirer = require('inquirer');
 const IPhoneFarmer = require('./IPhoneFarmer');
 const postcodes = require('./postcodes.json');
@@ -37,12 +38,12 @@ const askForPostcode = async () => {
   return postcodes[city];
 };
 
-const askUseSave = async (products, postcode) => {
+const askUseSave = async (products, postcode, mobile) => {
   const productNames = products.split(',').map(key => IPhoneFarmer.parts[key]);
 
   const { useSave } = await inquirer.prompt({
     type: 'confirm',
-    message: `Would you like to use old save?\n Phones: ${productNames}\n Postcode: ${postcode}\n`,
+    message: `Would you like to use old save?\n Phones: ${productNames}\n Postcode: ${postcode}\n Mobile: ${mobile}\n`,
     name: 'useSave',
     choices: Object.keys(postcodes)
   });
@@ -54,12 +55,15 @@ const askUseSave = async (products, postcode) => {
 (async function() {
   let products = localstorage.getItem('products');
   let postcode = localstorage.getItem('postcode');
+  await sendSMS.checkMobile();
+  let mobile = localstorage.getItem('mobile');
 
   if (products && postcode) {
-    const useSave = await askUseSave(products, postcode);
+    const useSave = await askUseSave(products, postcode, mobile);
     if (!useSave) {
       localstorage.removeItem('products');
       localstorage.removeItem('postcode');
+      localstorage.removeItem('mobile');
       products = undefined;
       postcode = undefined;
     }
@@ -83,6 +87,7 @@ const askUseSave = async (products, postcode) => {
     location: postcode,
     onResult: (...args) => {
       notifyOS.notify(...args);
+      sendSMS.notify(...args);
       goToApplePage.notify(...args);
     }
   });
