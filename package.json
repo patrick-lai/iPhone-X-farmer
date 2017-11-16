@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "package": "pkg src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "~0.17.1",
     "inquirer": "~4.0.0",
+    "node-countdown": "~0.1.0",
     "node-notifier": "~5.1.2"
   },
   "engines": {
     "node": "8.9.1"
+  },
+  "devDependencies": {
+    "pkg": "~4.3.0-beta.1"
   }
 }

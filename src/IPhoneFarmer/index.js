@@ -1,5 +1,6 @@
 const { fetch } = require('./api');
 const parts = require('./parts.json');
+const countdown = require('node-countdown');
 
 class IPhoneFarmer {
   constructor({ interval, location, products, onResult }) {
@@ -7,8 +8,25 @@ class IPhoneFarmer {
     this.products = products;
     this.onResult = onResult;
     if (!interval) throw new Error('Interval must be specified');
+    this.interval = interval * 1000 * 60;
+
+    // First time
+
     this.doFetch();
-    this.timeout = setTimeout(this.doFetch, interval * 1000 * 60);
+    countdown.start(this.interval, { suffix: '后开始 find iphone\n' }, err => {
+      err ? console.log(err.message) : console.log('开始 find iphone...');
+    });
+
+    this.timeout = setInterval(() => {
+      this.doFetch();
+      countdown.start(
+        this.interval,
+        { suffix: '后开始 find iphone...\n' },
+        err => {
+          err ? console.log(err.message) : console.log('开始 find iphone...\n');
+        }
+      );
+    }, this.interval);
   }
 
   async doFetch() {
