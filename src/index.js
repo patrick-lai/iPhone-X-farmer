@@ -83,7 +83,7 @@ const askUseSave = async (products, postcode, mobile) => {
 
   const farmer = new IPhoneFarmer({
     products,
-    interval: process.env.INTERVAL || 5, // 5 minutes
+    interval: process.env.INTERVAL || 10, // 10 seconds
     location: postcode,
     onResult: (...args) => {
       notifyOS.notify(...args);

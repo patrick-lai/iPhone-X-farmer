@@ -9,7 +9,7 @@ class IPhoneFarmer {
     this.products = products;
     this.onResult = onResult;
     if (!interval) throw new Error('Interval must be specified');
-    this.interval = interval * 1000 * 60;
+    this.interval = interval * 1000;
     // First time
     this.doFetch();
     this.timeout = setInterval(() => {
